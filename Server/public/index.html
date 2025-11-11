@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Label Detection</title>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    .container { max-width: 500px; margin: auto; }
+    .result { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Upload an image to detect labels</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required>
+      <br><br>
+      <input type="submit" value="Analyze Image">
+    </form>
+
+    <div class="result">
+      <!-- The server's response (labels) will appear here -->
+    </div>
+  </div>
+</body>
+</html>
