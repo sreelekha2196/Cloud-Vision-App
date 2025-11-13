@@ -51,6 +51,29 @@ input[type="file"] {
   background: #fff;
 }
 
+input[type="submit"] {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 12px;
+}
+
+input[type="submit"]:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+input[type="submit"]:active {
+  transform: translateY(0);
+}
+
 .actions {
   margin-top: 18px;
 }

@@ -2,24 +2,74 @@
 <html>
 <head>
   <title>Image Label Detection</title>
+  <link rel="stylesheet" href="/style.css">
   <style>
-    body { font-family: Arial; margin: 40px; }
-    .container { max-width: 500px; margin: auto; }
-    .result { margin-top: 20px; }
+    #imagePreview {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #imagePreview img {
+      max-width: 100%;
+      max-height: 400px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #imagePreview p {
+      margin-top: 10px;
+      color: #666;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Upload an image to detect labels</h2>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-      <input type="file" name="image" accept="image/*" required>
+    <h1>Image Label Detection</h1>
+    <p>Upload an image to detect labels using Google Cloud Vision API</p>
+    
+    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" id="imageInput" name="image" accept="image/*" required>
       <br><br>
       <input type="submit" value="Analyze Image">
     </form>
+
+    <!-- Image Preview Section -->
+    <div id="imagePreview">
+      <img id="previewImg" src="" alt="Image preview">
+      <p id="fileName"></p>
+    </div>
 
     <div class="result">
       <!-- The server's response (labels) will appear here -->
     </div>
   </div>
+
+  <script>
+    // Handle image preview
+    const imageInput = document.getElementById('imageInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImg = document.getElementById('previewImg');
+    const fileName = document.getElementById('fileName');
+
+    imageInput.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      
+      if (file) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+          previewImg.src = e.target.result;
+          fileName.textContent = `Selected: ${file.name}`;
+          imagePreview.style.display = 'block';
+        };
+        
+        reader.readAsDataURL(file);
+      } else {
+        imagePreview.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
