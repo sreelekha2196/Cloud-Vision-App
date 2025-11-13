@@ -102,27 +102,7 @@ gcloud app browse
 - **File Upload Endpoint**: `app.post("/upload", upload.single("image"), ...)`
 - **Vision API Integration**: `client.labelDetection(req.file.path)`
 
-## Issues Resolved
 
-- ✅ ESM module import compatibility with Google Cloud Vision package
-- ✅ Multer field name alignment between frontend and backend
-- ✅ Static file path configuration for GAE deployment
-- ✅ Google App Engine runtime configuration
-
-## Environment Variables
-
-- `PORT`: Server port (default: 8080)
-- `GOOGLE_APPLICATION_CREDENTIALS`: Path to service account key (set in app.yaml)
-
-## Future Improvements
-
-- Add image preview before upload
-- Display image alongside results
-- Add support for multiple languages
-- Implement caching for repeated analyses
-- Add error handling for invalid file types
-
-## Support & Documentation
 
 For detailed documentation, see the [Wiki](../../wiki)
 
